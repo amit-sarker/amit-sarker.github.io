@@ -88,31 +88,33 @@ p,
 a {
   font-family: Georgia, serif;
 /*   font-family: 'Lato', Verdana, Helvetica, sans-serif; */
-  font-size: 16px
+  font-size: 18px
 }
 
 strong {
   font-family: Georgia, serif;
 /*   font-family: 'Lato', Verdana, Helvetica, sans-serif; */
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 700
 }
 
 heading {
-  font-family: 'Lato', Verdana, Helvetica, sans-serif;
-  font-size: 22px;
+  font-family: Georgia, serif;
+/*   font-family: 'Lato', Verdana, Helvetica, sans-serif; */
+  font-size: 24px;
 }
 
 papertitle {
   font-family: Georgia, serif;
 /*   font-family: 'Lato', Verdana, Helvetica, sans-serif; */
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 700
 }
 
 name {
-  font-family: 'Lato', Verdana, Helvetica, sans-serif;
-  font-size: 32px;
+  font-family: Georgia, serif;
+/*   font-family: 'Lato', Verdana, Helvetica, sans-serif; */
+  font-size: 36px;
 }
 
 .one {
