@@ -1,80 +1,56 @@
 ---
 layout: page
-title: project 4
-description: another without an image
-img:
-importance: 3
-category: fun
+title: ICL Capabilities of LLMs
+description: In-Context Learning, LLM, Huggingface,  Chain-of-Thought (CoT).
+img: assets/img/icl_analysis.png
+importance: 1
+category: Graduate
+related_publications: false
 ---
+<a href="https://amit010.github.io/assets/pdf/icl_analysis_report.pdf">[Report]</a> <a href='https://github.com/amit-sarker/ICL-Analysis-NLP-685'>[Code]</a>
 
-Every project has a beautiful feature showcase page.
-It's easy to include images in a flexible 3-column grid format.
-Make your photos 1/3, 2/3, or full width.
+<strong>Background:</strong> I did this project for the <a href="https://people.cs.umass.edu/~miyyer/cs685/">COMPSCI 685: Advanced Natural Language Processing – Spring'24</a> course at UMass along with four other students. My contribution in this project was exploring the in-context learning capabilities of different LLMs which is described in Section 7 in the report.
 
-To give your project a background in the portfolio page, just add the img tag to the front matter like so:
+<strong>Project Title:</strong> Exploring the New Horizon of Sequence Modeling: Unveiling the Potentials and Challenges of Mamba.
 
-    ---
-    layout: page
-    title: project
-    description: a project with a background image
-    img: /assets/img/12.jpg
-    ---
+<p style="text-align:justify">
+<strong>Project Overview:</strong> This evaluation explores the In-context learning (ICL) capabilities of pre-trained language models on arithmetic tasks and sentiment analysis using synthetic datasets. The goal is to use different prompting strategies—zero-shot, few-shot, and chain-of-thought—to assess the performance of these models on the given tasks. We conducted two types of arithmetic tasks:
+
+<ul>
+    <li>Regular Arithmetic: Involves basic arithmetic operations like addition, subtraction, multiplication, and division (using integer division).</li>
+    <li>Jumbled Arithmetic: Involves standard arithmetic operations but with new symbols introduced for each operation:</li>
+    <ul>
+        <li>'$' represents addition, so a $ b equals a + b.</li>
+        <li>'#' represents subtraction, so a # b equals a - b.</li>
+        <li>'@' represents the operation (a + b) * (a - b), so a @ b equals this calculation.</li>
+    </ul>
+</ul>
+
+Introducing jumbled arithmetic aims to determine if the model is learning from the prompts or merely recalling from its pre-trained knowledge.
+For sentiment analysis, the task is to classify the sentiment (Positive, Negative, or Neutral) of a given text.
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/1.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/3.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/icl_analysis.png" title="project structure" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
-    Caption photos easily. On the left, a road goes through a tunnel. Middle, leaves artistically fall in a hipster photoshoot. Right, in another hipster photoshoot, a lumberjack grasps a handful of pine needles.
-</div>
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    This image can also have a caption. It's like magic.
+    This figure shows the examples of demonstrations that are given to LLMs to explore their ICL capabilities.
 </div>
 
-You can also put regular text between your rows of images.
-Say you wanted to write a little bit about your project before you posted the rest of the images.
-You describe how you toiled, sweated, _bled_ for your project, and then... you reveal its glory in the next row of images.
+<p style="text-align:justify"><strong>Findings:</strong> Here are the major findings of this ICL analysis:</p>
 
-<div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    You can also have artistically styled 2/3 + 1/3 images, like these.
-</div>
+<ul>
+    <li> <p style="text-align:justify"> Mistral-7b consistently outperformed other models across all tasks, demonstrating robust performance irrespective of the demonstration type.</p> </li>
+    <li> <p style="text-align:justify"> Cerebras-btlm-3b showed limited improvement with increased demonstrations, suggesting potential constraints in its ability to utilize contextual information effectively.</p> </li>
+    <li> <p style="text-align:justify"> In regular arithmetic, models generally improved with more demonstrations, with Mamba-7b and Mamba-2.8b particularly benefiting from true label demonstrations.</p> </li>
+    <li> <p style="text-align:justify"> Jumbled arithmetic revealed a stark contrast in model performance with CoT prompting, where Mistral-7b excelled significantly, indicating its strong capability to leverage additional contextual cues.</p> </li>
+    <li> <p style="text-align:justify"> Sentiment analysis tasks highlighted that all models benefited from demonstrations, especially with true labels. CoT prompting notably enhanced performance, with Cerebras-btlm-3b and Llama2-7b showing considerable gains.</p> </li>
+    <li> <p style="text-align:justify"> Demonstrations with random labels generally improved model performance but to a lesser extent compared to demonstrations with true labels.</p> </li>
+</ul>
 
-The code is simple.
-Just wrap your images with `<div class="col-sm">` and place them inside `<div class="row">` (read more about the <a href="https://getbootstrap.com/docs/4.4/layout/grid/">Bootstrap Grid</a> system).
-To make images responsive, add `img-fluid` class to each; for rounded corners and shadows use `rounded` and `z-depth-1` classes.
-Here's the code for the last row of images above:
 
-{% raw %}
 
-```html
-<div class="row justify-content-sm-center">
-  <div class="col-sm-8 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-  </div>
-  <div class="col-sm-4 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-  </div>
-</div>
-```
 
-{% endraw %}
+
+

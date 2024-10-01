@@ -1,81 +1,53 @@
 ---
 layout: page
-title: project 2
-description: a project with a background image and giscus comments
-img: assets/img/3.jpg
-importance: 2
-category: work
-giscus_comments: true
+title: Privacy Risk of ML Models
+description: NN, RNN, Adversarial Regularization, MemGuard
+img: assets/img/project2.png
+importance: 3
+category: Graduate
+giscus_comments: false
 ---
+<a href="https://amit010.github.io/assets/pdf/privacy_risk_ML_Models.pdf">[Report]</a> <a href='https://github.com/amit-sarker/MIA-Evaluation'>[Code]</a>
 
-Every project has a beautiful feature showcase page.
-It's easy to include images in a flexible 3-column grid format.
-Make your photos 1/3, 2/3, or full width.
+<strong>Background:</strong> I did this project for the <a href="https://people.cs.umass.edu/~amir/courses/CS660-FALL22/">COMPSCI 660: Advanced Information Assurance – Fall'22</a> course at UMass along with <a href="https://mashrur29.github.io/">Mashrur Rashik</a> and Erfan Entezami. All authors contributed equally in this project.
 
-To give your project a background in the portfolio page, just add the img tag to the front matter like so:
+<strong>Project Title:</strong> The Effectiveness of NN-based Defense Models Against Membership Inference Attacks.
 
-    ---
-    layout: page
-    title: project
-    description: a project with a background image
-    img: /assets/img/12.jpg
-    ---
+<p style="text-align:justify">
+<strong>Project Overview:</strong> This project addresses the critical need for robust defense mechanisms in machine learning to protect sensitive training data against membership inference attacks. By assessing the vulnerability of neural network-based models and evaluating existing defenses, we introduce a novel privacy risk score that quantifies the likelihood of individual data samples belonging to a model's training set.
+</p>
+The project focuses on the following research questions (RQs):
+<ul>
+    <li> RQ1: How vulnerable are neural network-based models to membership inference attacks? </li>
+    <li> RQ2: What is the effectiveness of existing neural network-based defense mechanisms in protecting against these attacks? </li>
+    <li> RQ3: Can a new privacy risk score accurately measure the privacy risks associated with individual data samples in machine learning models? </li>
+</ul>
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/1.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/3.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/project2.png" title="MI Attack" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
-    Caption photos easily. On the left, a road goes through a tunnel. Middle, leaves artistically fall in a hipster photoshoot. Right, in another hipster photoshoot, a lumberjack grasps a handful of pine needles.
-</div>
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    This image can also have a caption. It's like magic.
+    Improving existing attacks with class-dependent thresholds.
 </div>
 
-You can also put regular text between your rows of images.
-Say you wanted to write a little bit about your project before you posted the rest of the images.
-You describe how you toiled, sweated, _bled_ for your project, and then... you reveal its glory in the next row of images.
+<p style="text-align:justify"><strong>Methods:</strong> The methods used in this project on evaluating neural network-based defense models against membership inference attacks include the following key approaches:</p>
+<ul>
+    <li> <p style="text-align:justify">Benchmarking Membership Inference Attacks: The project uses a suite of neural network (NN)-based and metric-based membership inference attacks to evaluate the privacy risks of machine learning models. This involves testing both black-box and white-box attack scenarios to determine how easily an adversary can infer membership in the training dataset.</p> </li>
+    <li> <p style="text-align:justify">Defense Evaluation: Various defense mechanisms, such as adversarial regularization and MemGuard, are assessed for their effectiveness in protecting against membership inference attacks. These defenses are applied to the models to see if they can thwart or mitigate the attacks, measuring the degree to which they can preserve privacy without sacrificing model performance.</p> </li>
+    <li> <p style="text-align:justify">Development of a Privacy Risk Score: A novel privacy risk score is developed to provide a fine-grained measure of privacy risks at the individual sample level. This score calculates the probability that a particular data sample was part of the model’s training set based on the model's output behavior on that sample.</p> </li>
+    <li> <p style="text-align:justify">Implementation of Metric-Based Attacks: In addition to NN-based attacks, the project introduces metric-based attacks that utilize simpler statistical metrics (such as prediction correctness, confidence, and entropy) to estimate privacy leaks. These metrics provide an alternative method to assess the model’s vulnerability to membership inference without needing complex model training.</p> </li>
+    <li> <p style="text-align:justify">Empirical Testing and Validation: The models and defenses are empirically tested using datasets like <a href="https://www.comp.nus.edu.sg/~reza/files/dataset_texas.tgz">Texas-100</a> and <a href="https://www.comp.nus.edu.sg/~reza/files/dataset_purchase.tgz">Purchase 100</a>. The project includes extensive simulations to validate the effectiveness of the privacy risk score and the overall resilience of the defenses. This includes training shadow models to mimic the target model's behavior and using these models to evaluate the proposed metrics and privacy risk scores.</p> </li>
+    <li> <p style="text-align:justify">Comparative Analysis: The results from both NN-based and metric-based attacks are compared to determine which methods reveal more significant privacy leaks. This comparative analysis helps in understanding the strengths and weaknesses of different approaches to protecting privacy.</p> </li>
+</ul>
 
-<div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    You can also have artistically styled 2/3 + 1/3 images, like these.
-</div>
 
-The code is simple.
-Just wrap your images with `<div class="col-sm">` and place them inside `<div class="row">` (read more about the <a href="https://getbootstrap.com/docs/4.4/layout/grid/">Bootstrap Grid</a> system).
-To make images responsive, add `img-fluid` class to each; for rounded corners and shadows use `rounded` and `z-depth-1` classes.
-Here's the code for the last row of images above:
+<ul>
+    <li> <p style="text-align:justify">Vulnerability of Models: Neural network models are consistently vulnerable to membership inference attacks, indicating significant privacy risks across various model architectures and defense strategies.</p> </li>
+    <li> <p style="text-align:justify">Defense Effectiveness: Traditional defense mechanisms like adversarial regularization and MemGuard provide partial protection but are not foolproof, particularly against sophisticated attacks.</p> </li>
+    <li> <p style="text-align:justify">Privacy Risk Score: The developed privacy risk score effectively quantifies individual privacy risks by assessing the likelihood of a data sample being part of the training set, offering a more precise tool than previous methods.</p> </li>
+    <li> <p style="text-align:justify">Efficiency of Metric-Based Attacks: Metric-based attacks can be as effective As complex neural network-based attacks in detecting privacy leaks, highlighting the potential for more efficient privacy risk assessments.</p> </li>
+    <li> <p style="text-align:justify">Trade-offs and Challenges: The findings discuss the trade-offs between model utility and privacy, with stronger protections often compromising model performance, posing challenges for sensitive applications.</p> </li>
+</ul>
 
-{% raw %}
-
-```html
-<div class="row justify-content-sm-center">
-  <div class="col-sm-8 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-  </div>
-  <div class="col-sm-4 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-  </div>
-</div>
-```
-
-{% endraw %}

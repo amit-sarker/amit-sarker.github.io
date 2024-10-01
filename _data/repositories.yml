@@ -1,14 +1,9 @@
 github_users:
-  - torvalds
-  - alshedivat
-
-repo_description_lines_max: 2
+  - amit-sarker
 
 github_repos:
-  - alshedivat/al-folio
-  - jekyll/jekyll
-  - twbs/bootstrap
-  - jquery/jquery
-  - FortAwesome/Font-Awesome
-  - mathjax/MathJax
-  - jpswalsh/academicons
+  - amit-sarker/cdcop_aamas2021
+  - amit-sarker/TrackMe
+  - amit-sarker/GBFS_AI_Final_Assignment
+  - amit-sarker/csp_with_arc_consistency
+  - amit-sarker/Distance-Vector-routing-protocol

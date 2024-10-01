@@ -3,113 +3,73 @@
 
 @string{aps = {American Physical Society,}}
 
-@book{einstein1920relativity,
-  title={Relativity: the Special and General Theory},
-  author={Einstein, Albert},
-  year={1920},
-  publisher={Methuen & Co Ltd},
-  html={relativity.html}
+@inproceedings{sarker2021local,
+    title={A Local Search Based Approach to Solve Continuous DCOPs},
+    author={Sarker, Amit and Choudhury, Moumita and Khan, Md Mosaddek},
+    booktitle={Proceedings of the 20th International Conference on Autonomous Agents and MultiAgent Systems (AAMAS)},
+    publisher={International Foundation for Autonomous Agents and Multiagent Systems (IFAAMAS)},
+    abstract={Distributed Constraint Optimization Problems (DCOPs) are a suitable formulation for coordinating interactions (i.e. constraints) in cooperative multi-agent systems. The traditional DCOP model assumes that variables owned by the agents can take only discrete values and constraints' cost functions are defined for every possible value assignment of a set of variables. While this formulation is often reasonable, there are many applications where the decision variables are continuous-valued and constraints are in functional form. To overcome this limitation, Continuous DCOPs (C-DCOPs), an extension of the DCOPs model has been proposed that is able to formulate problems having continuous variables. The existing methods for solving C-DCOPs come with a huge computation and communication overhead. In this paper, we apply continuous non-linear optimization methods on Cooperative Constraint Approximation (CoCoA) algorithm, which is a non-iterative, fast incomplete local search approach for solving DCOPs. We empirically show that our algorithm is able to provide high-quality solutions at the expense of smaller communication cost and execution time compared to the state-of-the-art C-DCOP algorithms.},
+    pages={1127--1135},
+    abbr={AAMAS'21},
+    year={2021},
+    bibtex_show={true},
+    pdf={c_cocoa.pdf},
+    url={https://dl.acm.org/doi/10.5555/3463952.3464083},
+    html={https://dl.acm.org/doi/10.5555/3463952.3464083},
+    code={https://github.com/amit-sarker/cdcop_aamas2021},
+    slides={AAMAS20_presentation_slide.pdf},
+    preview={c_cocoa.png},
+    google_scholar_id={d1gkVwhDpl0C}
 }
 
-@book{einstein1956investigations,
+@article{choudhury2023particle,
+  title={A particle swarm inspired approach for continuous distributed constraint optimization problems},
+  author={Choudhury, Moumita and Sarker, Amit and Yaser, Samin and Khan, Md Maruf Al Alif and Yeoh, William and Khan, Md Mosaddek},
+  journal={Engineering Applications of Artificial Intelligence},
+  volume={123},
+  pages={106280},
+  year={2023},
+  publisher={Elsevier},
+  abbr={EAAI'23},
+  abstract={Distributed Constraint Optimization Problems (DCOPs) are a widely studied framework for coordinating interactions in cooperative multi-agent systems. In classical DCOPs, variables owned by agents are assumed to be discrete. However, in many applications, such as target tracking or sleep scheduling in sensor networks, continuous-valued variables are more suitable than discrete ones. To better model such applications, researchers have proposed Continuous DCOPs (C-DCOPs), an extension of DCOPs, that can explicitly model problems with continuous variables. The state-of-the-art approaches for solving C-DCOPs experience either onerous memory or computation overhead and are unsuitable for non-differentiable optimization problems. To address this issue, we propose a new C-DCOP algorithm, namely Particle Swarm Optimization Based C-DCOP (PCD), which is inspired by Particle Swarm Optimization (PSO), a well-known centralized population-based approach for solving continuous optimization problems. In recent years, population-based algorithms have gained significant attention in classical DCOPs due to their ability in producing high-quality solutions. Nonetheless, to the best of our knowledge, this class of algorithms has not been utilized to solve C-DCOPs and there has been no work evaluating the potential of PSO in solving classical DCOPs or C-DCOPs. In light of this observation, we adapted PSO, a centralized algorithm, to solve C-DCOPs in a decentralized manner. The resulting PCD algorithm not only produces good-quality solutions but also finds solution without any requirement for derivative calculations. Moreover, we design a crossover operator that can be used by PCD to further improve the quality of solutions found. Finally, we theoretically prove that PCD is an anytime algorithm and empirically evaluate PCD against the state-of-the-art C-DCOP algorithms in a wide variety of benchmarks.},
   bibtex_show={true},
-  title={Investigations on the Theory of the Brownian Movement},
-  author={Einstein, Albert},
-  year={1956},
-  publisher={Courier Corporation},
-  preview={brownian-motion.gif}
+  pdf={pcd.pdf},
+  url={https://www.sciencedirect.com/science/article/abs/pii/S0952197623004645},
+  html={https://www.sciencedirect.com/science/article/abs/pii/S0952197623004645},
+  code={https://github.com/moumitachoudhury/PCD},
+  google_scholar_id={qjMakFHDy7sC}
 }
 
-@article{einstein1950meaning,
-  abbr={AJP},
+@inproceedings{sarker2020c,
+  title={C-CoCoA: A Continuous Cooperative Constraint Approximation Algorithm to Solve Functional DCOPs},
+  author={Sarker, Amit and Arif, Abdullahil Baki and Choudhury, Moumita and Khan, Md Mosaddek},
+  booktitle={Proceedings of the 19th International Conference on Autonomous Agents and MultiAgent Systems (AAMAS)},
+  publisher={International Foundation for Autonomous Agents and Multiagent Systems (IFAAMAS)},
+  Pages={1990--1992},
+  abbr={AAMAS'20},
   bibtex_show={true},
-  title={The meaning of relativity},
-  author={Einstein, Albert and Taub, AH},
-  journal={American Journal of Physics},
-  volume={18},
-  number={6},
-  pages={403--404},
-  year={1950},
-  publisher={American Association of Physics Teachers}
+  url={https://dl.acm.org/doi/abs/10.5555/3398761.3399051},
+  html={https://dl.acm.org/doi/abs/10.5555/3398761.3399051},
+  year={2020},
+  google_scholar_id={u5HHmVD_uO8C}
 }
 
-@article{PhysRev.47.777,
-  abbr={PhysRev},
-  title={Can Quantum-Mechanical Description of Physical Reality Be Considered Complete?},
-  author={Einstein*†, A. and Podolsky*, B. and Rosen*, N.},
-  abstract={In a complete theory there is an element corresponding to each element of reality. A sufficient condition for the reality of a physical quantity is the possibility of predicting it with certainty, without disturbing the system. In quantum mechanics in the case of two physical quantities described by non-commuting operators, the knowledge of one precludes the knowledge of the other. Then either (1) the description of reality given by the wave function in quantum mechanics is not complete or (2) these two quantities cannot have simultaneous reality. Consideration of the problem of making predictions concerning a system on the basis of measurements made on another system that had previously interacted with it leads to the result that if (1) is false then (2) is also false. One is thus led to conclude that the description of reality as given by a wave function is not complete.},
-  journal={Phys. Rev.},
-  location={New Jersey},
-  volume={47},
-  issue={10},
-  pages={777--780},
-  numpages={0},
-  year={1935},
-  month={May},
-  publisher=aps,
-  doi={10.1103/PhysRev.47.777},
-  url={http://link.aps.org/doi/10.1103/PhysRev.47.777},
-  html={https://journals.aps.org/pr/abstract/10.1103/PhysRev.47.777},
-  pdf={example_pdf.pdf},
-  altmetric={248277},
-  dimensions={true},
-  google_scholar_id={qyhmnyLat1gC},
-  video={https://www.youtube-nocookie.com/embed/aqz-KE-bpKQ},
-  additional_info={. *More Information* can be [found here](https://github.com/alshedivat/al-folio/)},
-  annotation={* Example use of superscripts<br>† Albert Einstein},
-  selected={true},
-  inspirehep_id = {3255}
-}
-
-@article{einstein1905molekularkinetischen,
-  title={{\"U}ber die von der molekularkinetischen Theorie der W{\"a}rme geforderte Bewegung von in ruhenden Fl{\"u}ssigkeiten suspendierten Teilchen},
-  author={Einstein, A.},
-  journal={Annalen der physik},
-  volume={322},
-  number={8},
-  pages={549--560},
-  year={1905},
-  publisher={Wiley Online Library}
-}
-
-@article{einstein1905movement,
-  abbr={Ann. Phys.},
-  title={Un the movement of small particles suspended in statiunary liquids required by the molecular-kinetic theory 0f heat},
-  author={Einstein, A.},
-  journal={Ann. Phys.},
-  volume={17},
-  pages={549--560},
-  year={1905}
-}
-
-@article{einstein1905electrodynamics,
-  title={On the electrodynamics of moving bodies},
-  author={Einstein, A.},
-  year={1905}
-}
-
-@Article{einstein1905photoelectriceffect,
+@article{10599095,
+  author={Panavas*, Liudas and Sarker*, Amit and Bartolomeo, Sara Di and Sarvghad, Ali and Dunne, Cody and Mahyar, Narges},
+  journal={IEEE Transactions on Visualization and Computer Graphics},
+  title={Illuminating the Landscape of Differential Privacy: An Interview Study on the Use of Visualization in Real-World Deployments},
+  year={2024},
+  volume={},
+  number={},
+  pages={1-16},
+  publisher={IEEE},
+  abbr={TVCG'24},
+  abstract={As Differential Privacy (DP) transitions from theory to practice, visualization has surfaced as a catalyst in promoting acceptance and usage. Despite the potential of visualization tools to support differential privacy implementation, their development is limited by a lack of understanding of the overall deployment process, practitioner challenges, and the role of visual tools in real-world deployments. To narrow this gap, we interviewed 18 professionals from various backgrounds who regularly engage with differential privacy in their work. Our objectives were to understand the differential privacy implementation process and associated challenges; explore the actors (individuals involved in differential privacy implementation), how they use or struggle to use visualization; and identify the benefits and challenges of using visualization in the implementation process. Our results delineate the differential privacy implementation process into five distinct stages and highlight the main actors alongside the diverse visualization applications and shortcomings. We find that visualizations can be used to build foundational differential privacy knowledge, describe implementation parameters, and evaluate private outputs. However, the visualization strategies described often fail to address the diverse technical backgrounds and varied privacy and accuracy concerns of users, hindering effective communication between the different actors involved in the implementation process. From our findings, we propose three research directions: visualizations for setting and evaluating noise addition, evaluation of uncertainty visualization related to trust in differential privacy, and research focused on pedagogical visualizations for complex data science topics. A free copy of this paper and all supplemental materials are available at https://osf.io/qhyzt/?view_only=1a5c7d7553c840ab9f125d88bc13946f},
   bibtex_show={true},
-  abbr={Ann. Phys.},
-  title="{{\"U}ber einen die Erzeugung und Verwandlung des Lichtes betreffenden heuristischen Gesichtspunkt}",
-  author={Albert Einstein},
-  abstract={This is the abstract text.},
-  journal={Ann. Phys.},
-  volume={322},
-  number={6},
-  pages={132--148},
-  year={1905},
-  doi={10.1002/andp.19053220607},
-  award={Albert Einstein receveid the **Nobel Prize in Physics** 1921 *for his services to Theoretical Physics, and especially for his discovery of the law of the photoelectric effect*},
-  award_name={Nobel Prize}
-}
-
-@book{przibram1967letters,
-  bibtex_show={true},
-  title={Letters on wave mechanics},
-  author={Einstein, Albert and Schrödinger, Erwin and Planck, Max and Lorentz, Hendrik Antoon and Przibram, Karl},
-  year={1967},
-  publisher={Vision},
-  preview={wave-mechanics.gif},
-  abbr={Vision}
+  doi={10.1109/TVCG.2024.3427733},
+  pdf={dp_vis.pdf},
+  url={https://ieeexplore.ieee.org/document/10599095},
+  html={https://ieeexplore.ieee.org/document/10599095},
+  code={https://osf.io/qhyzt/?view_only=1a5c7d7553c840ab9f125d88bc13946f},
+  google_scholar_id={IjCSPb-OGe4C}
 }

@@ -1,8 +1,8 @@
 ---
 layout: post
-date: 2016-01-15 07:59:00-0400
+date: 2020-12-17
 inline: true
 related_posts: false
 ---
 
-A simple inline announcement with Markdown emoji! :sparkles: :smile:
+AAMAS full paper on <a href='https://dl.acm.org/doi/10.5555/3463952.3464083'>A Local Search Based Approach to Solve Continuous DCOPs</a> accepted!
