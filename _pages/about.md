@@ -2,7 +2,7 @@
 layout: about
 title: About
 permalink: /
-subtitle: **_Actively looking for internships for Summer 2025!_**
+subtitle: Actively looking for internships for Summer 2025!
 
 profile:
   align: right
