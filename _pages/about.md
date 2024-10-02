@@ -16,7 +16,7 @@ social: true # includes social icons at the bottom of the page
 ---
 <p style="text-align:justify">
 As a Computer Science PhD student at the <a href='https://www.cics.umass.edu/'>University of Massachusetts Amherst</a>, 
-I am exploring the fields of data privacy and fairness in decision-making from private data. My current research focuses 
+I am exploring the fields of data privacy and fairness in decision-making from private data. Specifically, my current research focuses 
 on the design and implementation of visual data exploration platforms tailored for Differentially Private data, alongside an 
 exploration of the fairness implications within Differential Privacy algorithms. I am advised by 
 <a href="https://groups.cs.umass.edu/nmahyar/">Prof. Narges Mahyar</a> and 
