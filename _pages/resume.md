@@ -1,7 +1,7 @@
 ---
 layout: cv
-permalink: /cv/
-title: CV
+permalink: /resume/
+title: Resume
 nav: true
 nav_order: 6
 cv_pdf: Resume_Amit_Sarker.pdf
