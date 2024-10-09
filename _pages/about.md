@@ -2,7 +2,7 @@
 layout: about
 title: About
 permalink: /
-subtitle: <a href='https://amit010.github.io/assets/pdf/Personal_Statement.pdf'>Actively looking for internships for Summer 2025!t</a>
+subtitle: <a href='https://amit010.github.io/assets/pdf/Personal_Statement.pdf'>Actively looking for internship opportunities for Summer 2025!</a>
 
 profile:
   align: right
@@ -52,4 +52,5 @@ My current research interests are:
     <li> Data Visualization </li>
     <li> Natural Language Processing </li>
     <li> Human-Computer Interaction </li>
+    <li> Multi-Agent Systems </li>
 </ul>
