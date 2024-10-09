@@ -7,7 +7,7 @@ importance: 3
 category: Graduate
 giscus_comments: false
 ---
-<a href="https://amit010.github.io/assets/pdf/privacy_risk_ML_Models.pdf">[Report]</a> <a href='https://github.com/amit-sarker/MIA-Evaluation'>[Code]</a>
+<a href="https://amit-sarker.github.io/assets/pdf/privacy_risk_ML_Models.pdf">[Report]</a> <a href='https://github.com/amit-sarker/MIA-Evaluation'>[Code]</a>
 
 <strong>Background:</strong> I did this project for the <a href="https://people.cs.umass.edu/~amir/courses/CS660-FALL22/">COMPSCI 660: Advanced Information Assurance – Fall'22</a> course at UMass along with <a href="https://mashrur29.github.io/">Mashrur Rashik</a> and Erfan Entezami. All authors contributed equally in this project.
 

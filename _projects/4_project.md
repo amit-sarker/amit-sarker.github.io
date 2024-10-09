@@ -7,7 +7,7 @@ importance: 1
 category: Graduate
 related_publications: false
 ---
-<a href="https://amit010.github.io/assets/pdf/icl_analysis_report.pdf">[Report]</a> <a href='https://github.com/amit-sarker/ICL-Analysis-NLP-685'>[Code]</a>
+<a href="https://amit-sarker.github.io/assets/pdf/icl_analysis_report.pdf">[Report]</a> <a href='https://github.com/amit-sarker/ICL-Analysis-NLP-685'>[Code]</a>
 
 <strong>Background:</strong> I did this project for the <a href="https://people.cs.umass.edu/~miyyer/cs685/">COMPSCI 685: Advanced Natural Language Processing – Spring'24</a> course at UMass along with four other students. My contribution in this project was exploring the in-context learning capabilities of different LLMs which is described in Section 7 in the report.
 

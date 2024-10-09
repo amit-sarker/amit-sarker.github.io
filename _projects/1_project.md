@@ -7,7 +7,7 @@ importance: 2
 category: Graduate
 related_publications: false
 ---
-<a href="https://amit010.github.io/assets/pdf/LLM_Personalization.pdf">[Report]</a> <a href='https://github.com/amit-sarker/LLM_Personalization'>[Code]</a>
+<a href="https://amit-sarker.github.io/assets/pdf/LLM_Personalization.pdf">[Report]</a> <a href='https://github.com/amit-sarker/LLM_Personalization'>[Code]</a>
 
 <strong>Background:</strong> I did this project for the <a href="https://groups.cs.umass.edu/zamani/compsci-646-information-retrieval-fall-2023/">COMPSCI 646: Information Retrieval – Fall'23</a> course at UMass along with <a href="https://mashrur29.github.io/">Mashrur Rashik</a>. Both authors contributed equally in this project.
 
