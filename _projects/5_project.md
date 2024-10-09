@@ -6,7 +6,7 @@ img: assets/img/cover.png
 
 [//]: # (redirect: https://unsplash.com)
 importance: 5
-category: Undergrad
+category: fun
 ---
 
 <strong>Project Timeframe:</strong> Feb. 2018 to Apr. 2018
