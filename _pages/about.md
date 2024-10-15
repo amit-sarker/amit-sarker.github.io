@@ -2,7 +2,7 @@
 layout: about
 title: About
 permalink: /
-subtitle: <a href="https://amit-sarker.github.io/assets/pdf/personal_statement.pdf" style="color:#E10000;"> <u><b>Actively looking for internship opportunities for Summer 2025!</b></u></a>
+subtitle: <a href="https://amit-sarker.github.io/assets/pdf/personal_statement.pdf" style="color:#E10000;"> <u><b>Actively looking for internship opportunities for Summer 2025! (Click to read my Personal Statement)</b></u></a>
 
 profile:
   align: right
