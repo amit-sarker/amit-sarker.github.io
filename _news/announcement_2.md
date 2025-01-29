@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Received <a href='https://www.cics.umass.edu/news/scholarship-established-honor-jim-kurose'>James Kurose Scholarship</a> in Computer Science!
+Received James Kurose Scholarship in Computer Science!
