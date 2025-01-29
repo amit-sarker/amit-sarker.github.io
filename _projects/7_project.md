@@ -18,7 +18,7 @@ related_publications: false
 
 <ul>
     <li>We designed a two-stage object detection system integrating ResNet-18 with YOLOv5m, improving localization accuracy and reducing false positives (improving mAP by 24.7%) in occluded scenarios.</li>
-    <li>We fine-tuned YOLOv5m with occlusion-aware modules, achieving a 44.5\% improvement in small-object detection in coco vehicle dataset.</li>
+    <li>We fine-tuned YOLOv5m with occlusion-aware modules, achieving a 44.5% improvement in small-object detection in coco vehicle dataset.</li>
 </ul>
 
 <div class="row">
