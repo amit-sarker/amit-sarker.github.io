@@ -2,7 +2,7 @@
 layout: about
 title: About
 permalink: /
-subtitle: <a href="https://amit-sarker.github.io/assets/pdf/personal_statement.pdf" style="color:#E10000;"> <u><b>Actively looking for internship opportunities for Summer 2025! (Click to read my Personal Statement)</b></u></a>
+subtitle: <a href="https://amit-sarker.github.io/assets/pdf/personal_statement.pdf" style="color:#E10000;"> <u><b>Actively looking for internship opportunities for Summer 2026! (Click to read my Personal Statement)</b></u></a>
 
 profile:
   align: right
@@ -22,15 +22,6 @@ exploration tools that make Differentially Private data more accessible and in s
 Differential Privacy algorithms. I am advised by <a href="https://groups.cs.umass.edu/nmahyar/">Prof. Narges Mahyar</a> and 
 <a href="https://groups.cs.umass.edu/asarv/">Prof. Ali Sarvghad</a> in the <a href="https://groups.cs.umass.edu/hci-vis/">HCI-VIS 
 Lab</a> at UMass. </p>
-
-<p style="text-align:justify">
-Prior to my doctoral studies, I worked as a research assistant at the 
-<a href='https://mmkhansajeeb.com/cailresearchgroup.html'>Cognitive Agents and Interaction Lab (CAIL)</a>, 
-where my work encompassed a diverse range of real-world problem-solving. These included tackling challenges 
-in multi-agent coordination, optimization, as well as planning and scheduling. More specifically, I applied 
-local search and particle swarm optimization (PSO) based algorithms for solving Continuous Distributed Constraint Optimization
-Problems (C-DCOPs) in multi-agent systems.
-</p>
 
 <p style="text-align:justify">
 Before starting my PhD, I worked as a research assistant at the <a href='https://mmkhansajeeb.com/cailresearchgroup.html'>Cognitive 
