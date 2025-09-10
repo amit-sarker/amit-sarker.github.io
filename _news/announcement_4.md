@@ -1,8 +1,8 @@
 ---
 layout: post
-date: 2020-01-10
+date: 2025-06-01
 inline: true
 related_posts: false
 ---
 
-AAMAS extended abstract on <a href='https://dl.acm.org/doi/abs/10.5555/3398761.3399051'>Continuous DCOPs</a> accepted!
+Working as a PC member of the AIES-25 conference. Excited to review quality papers on AI ethics and safety!
