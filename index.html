@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:opsz,wght@8..60,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20261030v">
+  <link rel="stylesheet" href="style.css?v=20261030x">
 </head>
 <body>
 
@@ -38,11 +38,13 @@
 <header class="hero" id="top">
   <canvas id="town" aria-hidden="true"></canvas>
   <div class="town-tags" id="town-tags" aria-hidden="true"></div>
+  <div class="town-card" id="town-card" hidden></div>
   <h1 class="visually-hidden">Amit Sarker</h1>
   <div class="wrap">
     <div class="town-dialog" aria-hidden="true">
-      <div class="town-head"><span id="town-day">DAY 1 · MORNING</span><span id="town-tally"></span></div>
+      <div class="town-head"><span id="town-day">DAY 1 · MORNING</span><span id="town-tally"></span><span class="town-more">LOG &#9662;</span></div>
       <p class="town-text" id="town-text"></p>
+      <ol class="town-log" id="town-log" aria-hidden="true"></ol>
     </div>
   </div>
   <div class="town-key">
@@ -341,7 +343,7 @@
   </div>
 </footer>
 
-<script src="town.js?v=20261030s"></script>
+<script src="town.js?v=20261030x"></script>
 <script src="main.js?v=20261030s"></script>
 </body>
 </html>

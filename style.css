@@ -81,6 +81,9 @@ nav {
   border-bottom: 1px solid transparent;
 }
 nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+/* over the banner the empty part of the menu bar lets the pointer reach the text box and the agents below it */
+nav:not(.scrolled), nav:not(.scrolled) .wrap { pointer-events: none; }
+nav:not(.scrolled) .wrap > * { pointer-events: auto; }
 nav .brand { font-family: var(--font-display); font-weight: 600; font-size: 19px; color: var(--hero-text); opacity: 0; transition: opacity .25s; }
 nav ul { list-style: none; display: flex; gap: 26px; margin: 0; padding: 0; }
 nav ul a { color: rgba(255, 255, 255, .82); font-size: 15px; font-weight: 600; letter-spacing: .02em; }
@@ -139,6 +142,19 @@ nav.scrolled ul a:hover { color: var(--accent); }
 }
 .town-head { display: flex; justify-content: space-between; gap: 8px; font-size: 8px; color: #ffcd75; margin-bottom: 8px; }
 .town-text { font-size: 10px; line-height: 1.7; margin: 0; min-height: 3.4em; }
+/* earlier events stay folded away so the box keeps its size; hovering or tapping the box opens them */
+.town-dialog { pointer-events: auto; cursor: pointer; }
+.town-more { display: none; color: #94b0c2; margin-left: auto; padding-left: 8px; }
+.town-dialog.has-log .town-more { display: inline; }
+.town-head span { white-space: nowrap; }
+#town-tally:not(:empty) + .town-more { display: none !important; }
+.town-dialog:hover .town-more, .town-dialog.open .town-more { color: #ffcd75; }
+.town-log { display: none; }
+.town-dialog:hover .town-log, .town-dialog.open .town-log { display: block; }
+.town-log { list-style: none; margin: 8px 0 0; padding: 7px 0 0; border-top: 1px dashed #566c86; font-size: 8px; line-height: 1.7; color: #94b0c2; }
+.town-log:empty { display: none !important; }
+.town-log li { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.town-log li + li { opacity: .8; }
 .town-text::after { content: "\258C"; animation: blink 1s steps(2) infinite; margin-left: 2px; color: #ffcd75; }
 @keyframes blink { 50% { opacity: 0; } }
 .town-pause {
@@ -163,6 +179,35 @@ nav.scrolled ul a:hover { color: var(--accent); }
   background: rgba(26, 28, 44, .9); border: 2px solid #f4f4f4; box-shadow: 2px 2px 0 #566c86;
 }
 .town-legend li { display: flex; align-items: center; gap: 6px; white-space: nowrap; }
+/* a legend item lights up when its event happens in the town (town.js adds .lit) */
+.town-legend li.lit { animation: lit 1.6s steps(8) 1; }
+@keyframes lit { 0%, 55% { color: #ffcd75; transform: translateY(-2px); text-shadow: 0 0 6px rgba(255, 205, 117, .8); } 100% { color: inherit; transform: none; text-shadow: none; } }
+/* card for the agent under the pointer, or the one the visitor tapped */
+.town-card {
+  position: absolute; left: 0; top: 0; z-index: 4; width: 210px; padding: 9px 10px 10px; pointer-events: none;
+  font-family: var(--font-pixel); font-size: 8px; line-height: 1.7; color: #f4f4f4;
+  background: rgba(26, 28, 44, .95); border: 2px solid #f4f4f4; box-shadow: 2px 2px 0 #566c86;
+}
+.town-card[hidden] { display: none; }
+.town-card.pinned { pointer-events: auto; border-color: #ffd23f; }
+.town-card p { margin: 3px 0 0; }
+.tc-head { display: flex; align-items: center; gap: 6px; font-size: 10px; margin-bottom: 4px; }
+.tc-head b { font-weight: 400; }
+.tc-dot { width: 8px; height: 8px; flex: none; box-shadow: 0 0 0 1px #1a1c2c; }
+.tc-role { margin-left: auto; font-size: 7px; color: #1a1c2c; background: #ffd23f; padding: 2px 4px 1px; }
+.tc-role.bad { background: #ff5c6c; }
+.tc-rep { display: flex; align-items: center; gap: 5px; }
+.tc-bar { flex: 1; height: 6px; background: #333c57; box-shadow: 0 0 0 1px #566c86; }
+.tc-bar i { display: block; height: 100%; background: #a7f070; }
+.tc-k.pink { color: #f77fbe; } .tc-k.red { color: #ff6b6b; }
+.tc-hint { color: #94b0c2; }
+.tc-btns { display: flex; gap: 6px; margin-top: 8px; }
+.tc-btns button {
+  flex: 1; display: flex; align-items: center; justify-content: center; gap: 5px; padding: 6px 4px 5px; cursor: pointer;
+  font: inherit; color: #f4f4f4; background: #333c57; border: 2px solid #f4f4f4; box-shadow: 2px 2px 0 #566c86;
+}
+.tc-btns button:hover { color: #ffcd75; border-color: #ffcd75; }
+.tc-btns canvas { width: 10px; height: 10px; image-rendering: pixelated; }
 .town-legend canvas { width: 15px; height: 15px; image-rendering: pixelated; image-rendering: crisp-edges; }
 /* below 1000px the key would cover the road, so it is left out */
 @media (max-width: 1279px) {

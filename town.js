@@ -4,7 +4,9 @@
 // enough agents distrust someone the town exposes them and a newcomer moves in. Party leaders
 // give speeches that can win listeners over, and once a day the town elects a mayor (crown),
 // forming a coalition when no party has a majority. At dusk everyone goes home.
-// A text box in the top-left corner narrates what happens, and a legend under the road names the symbols.
+// A text box in the top-left corner narrates what happens and keeps the last few events (opened by hovering or tapping it), and a legend under the road
+// names the symbols and lights up each one as its event happens. Hovering or tapping an agent opens a card with its
+// party, reputation, and whom it trusts; a pinned card lets the visitor vouch for or warn about that agent.
 // Illustrative, not real data.
 (function () {
   'use strict';
@@ -52,12 +54,15 @@
   var dayLabel = document.getElementById('town-day'), tallyEl = document.getElementById('town-tally');
   var playBtn = document.getElementById('town-pause');
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var logEl = document.getElementById('town-log'), card = document.getElementById('town-card'), dlg = document.querySelector('.town-dialog');
+  dlg.addEventListener('click', function () { dlg.classList.toggle('open'); });
 
   // ----------------------------------------------------------------- state
   var DAY = 3600;                       // one day = 60 seconds at 1x
   var S, W, H, yA, yB, cx, P, lanes, houses, trees, bushes, lamps, field, pond, stall, well, podium, box, ground;
   var agents, nextId, tick, day, mayor, ruling, partner, rally, election, convs, effects, smoke, lastTrust = -1e9;
   var BASE_SPEED = .7, acc = 0;  // the town runs at 70% of the frame rate
+  var hover = null, pinned = null, logLines = [], lastAct = -1e9;
   var paused = false, onScreen = true, speed = 1, frameNo = 0, tags = [], queue = [], shown = null, typed = 0, shownAt = -1e9;
 
   function mulberry(a) { return function () { a |= 0; a = a + 0x6D2B79F5 | 0; var t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
@@ -314,9 +319,17 @@
   }
 
   // ------------------------------------------------------------- effects
-  function bubble(a, icon, dur) { a.bubble = { icon: icon, until: tick + dur }; }
-  function floatIcon(x, y, icon, dur) { effects.push({ type: 'float', x: x, y: y, icon: icon, t0: tick, dur: dur || 70 }); }
-  function sparkle(a) { effects.push({ type: 'spark', a: a, t0: tick, dur: 50 }); }
+  // the legend item for a symbol lights up whenever that symbol appears in the town
+  var legendItems = {}, TAG_ICON = { trust: 'heart', betrayal: 'broken', deceptive: 'warn', influence: 'mega', election: 'crown', power: 'crown', coalition: 'flags' };
+  Array.prototype.forEach.call(document.querySelectorAll('.town-legend canvas[data-icon]'), function (c) { legendItems[c.dataset.icon] = c.parentElement; });
+  function pulse(icon) {
+    var li = legendItems[icon];
+    if (!li || reduce) return;
+    li.classList.remove('lit'); void li.offsetWidth; li.classList.add('lit');
+  }
+  function bubble(a, icon, dur) { a.bubble = { icon: icon, until: tick + dur }; pulse(icon); }
+  function floatIcon(x, y, icon, dur) { effects.push({ type: 'float', x: x, y: y, icon: icon, t0: tick, dur: dur || 70 }); pulse(icon); }
+  function sparkle(a) { effects.push({ type: 'spark', a: a, t0: tick, dur: 50 }); pulse('flags'); }
 
   // ----------------------------------------------------------- the story
   function phase() { return (tick % DAY) / DAY; }
@@ -324,7 +337,15 @@
   function timeName(p) { return p < .25 ? 'MORNING' : p < .5 ? 'NOON' : p < .74 ? 'AFTERNOON' : p < .84 ? 'EVENING' : 'NIGHT'; }
   function isDay() { var p = phase(); return p < .76 || p > .975; }
 
-  function say(text, pri) { queue.push({ text: text, pri: pri || 0, at: frameNo }); }
+  function say(text, pri) { queue.push({ text: text, pri: pri || 0, at: frameNo, day: day }); }
+  // the three events before the current one stay in the text box (shown on hover or tap), so a visitor can follow the story
+  function drawLog() {
+    dlg.classList.toggle('has-log', logLines.length > 0);
+    logEl.innerHTML = '';
+    logLines.forEach(function (m) {
+      var li = document.createElement('li'); li.textContent = 'D' + m.day + ' \u00b7 ' + m.text; logEl.appendChild(li);
+    });
+  }
 
   function tag(kind, follow, wx, wy) {
     if (tags.length >= 3) { var old = tags.shift(); old.el.remove(); }
@@ -332,6 +353,7 @@
     el.className = 'town-tag tag-' + kind; el.textContent = kind.toUpperCase();
     tagLayer.appendChild(el);
     tags.push({ el: el, follow: follow, wx: wx, wy: wy, born: frameNo });
+    pulse(TAG_ICON[kind]);
   }
 
   function startTalk(a, b) {
@@ -744,6 +766,8 @@
       }
     });
 
+    drawSelection();
+
     // dusk tint, night, and the lights
     var p = phase(), dark = 0, warm = 0;
     if (p > .74 && p < .86) { warm = Math.sin((p - .74) / .12 * Math.PI) * .18; }
@@ -759,6 +783,21 @@
       houses.forEach(function (h) { if (h.lit) { px(h.x - 6, h.yb - 7, 2, 2, C.sand); px(h.x + 4, h.yb - 7, 2, 2, C.sand); } });
       lamps.forEach(function (l) { px(l.x - 1, l.y - 9, 3, 2, C.sand); });
     }
+  }
+  // the selected agent gets gold corners, with lines to the agents it trusts (pink) and distrusts (red)
+  function drawSelection() {
+    var a = pinned || hover;
+    if (!a || a.hidden || a.gone) return;
+    live().forEach(function (o) {
+      if (o === a || o.hidden) return;
+      var t = T(a, o), col = t >= .65 ? C.pink : t < .25 ? C.bad : null;
+      if (!col) return;
+      var dx = o.x - a.x, dy = (o.y - 5) - (a.y - 5), n = Math.max(1, Math.round(Math.hypot(dx, dy) / 3));
+      for (var i = 1; i < n; i++) px(a.x + dx * i / n, a.y - 5 + dy * i / n, 1, 1, col);
+    });
+    var x = Math.round(a.x) - 6, y = Math.round(a.y) - 14, c = C.gold;
+    px(x, y, 3, 1, c); px(x, y, 1, 3, c); px(x + 11, y, 3, 1, c); px(x + 13, y, 1, 3, c);
+    px(x, y + 16, 3, 1, c); px(x, y + 14, 1, 3, c); px(x + 11, y + 16, 3, 1, c); px(x + 13, y + 14, 1, 3, c);
   }
   function glow(x, y, r, a) {
     var gr = g.createRadialGradient(x, y, 0, x, y, r);
@@ -784,11 +823,13 @@
       t.el.style.opacity = hidden ? '0' : String(Math.min(1, age / 12, (260 - age) / 30));
       return true;
     });
+    updateCard(sx, sy);
     var p = phase();
     dayLabel.textContent = 'DAY ' + day + ' · ' + timeName(p);
     queue = queue.filter(function (m) { return frameNo - m.at < (m.pri > 1 ? 900 : m.pri ? 420 : 240) / speed; });
     if (queue.length && frameNo - shownAt > 170 / speed) {
       var best = 0; for (var i = 1; i < queue.length; i++) if (queue[i].pri > queue[best].pri) best = i;
+      if (shown) { logLines.unshift(shown); if (logLines.length > 3) logLines.length = 3; drawLog(); }
       shown = queue.splice(best, 1)[0]; shownAt = frameNo; typed = 0;
     }
     if (shown && typed < shown.text.length) {
@@ -797,9 +838,98 @@
     }
   }
 
+  // ------------------------------------------------------- agent card
+  function doing(a) {
+    if (a.leaving) return 'leaving town';
+    if (a.state === 'home') return 'at home';
+    if (a.state === 'talk') return 'chatting';
+    if (a.state === 'speak') return 'giving a speech';
+    if (a.state === 'listen') return election ? 'voting' : 'listening';
+    if (a.goal === 'home') return 'going home';
+    if (a.goal === 'vote') return 'going to vote';
+    if (a.goal === 'rally' || a.goal === 'gather') return 'going to a speech';
+    return a.state === 'walk' ? 'walking' : 'looking around';
+  }
+  function names(list) { return list.length ? list.slice(0, 3).map(function (o) { return o.name; }).join(', ') : 'nobody yet'; }
+  var cardFor = null, cardKey = '';
+  function updateCard(sx, sy) {
+    if (pinned && (pinned.gone || pinned.hidden)) pinned = null;
+    if (hover && (hover.gone || hover.hidden)) hover = null;
+    var a = pinned || hover;
+    if (!a) { if (!card.hidden) { card.hidden = true; cardFor = null; } return; }
+    var others = live().filter(function (o) { return o !== a; });
+    var trusts = others.filter(function (o) { return T(a, o) >= .65; }).sort(function (p, q) { return T(a, q) - T(a, p); });
+    var wary = others.filter(function (o) { return T(a, o) < .25; }).sort(function (p, q) { return T(a, p) - T(a, q); });
+    var rep = Math.round(reputation(a) * 100), role = a.exposed ? 'EXPOSED' : a === mayor ? 'MAYOR' : '';
+    var key = [a.id, a.party, role, rep, doing(a), names(trusts), names(wary), !!pinned].join('|');
+    if (key !== cardKey) {
+      cardKey = key;
+      var P0 = PARTIES[a.party];
+      card.innerHTML =
+        '<div class="tc-head"><span class="tc-dot" style="background:' + P0.c + '"></span><b>' + a.name + '</b>' +
+        (role ? '<span class="tc-role' + (a.exposed ? ' bad' : '') + '">' + role + '</span>' : '') + '</div>' +
+        '<p>' + P0.name + ' party &middot; ' + doing(a) + '</p>' +
+        '<p class="tc-rep">Reputation <span class="tc-bar"><i style="width:' + rep + '%"></i></span> ' + rep + '</p>' +
+        '<p><span class="tc-k pink">Trusts</span> ' + names(trusts) + '</p>' +
+        '<p><span class="tc-k red">Wary of</span> ' + names(wary) + '</p>' +
+        (pinned ? '<div class="tc-btns"><button type="button" data-act="vouch"><canvas data-icon="heart"></canvas>Vouch</button>' +
+          '<button type="button" data-act="warn"><canvas data-icon="warn"></canvas>Warn</button></div>'
+          : '<p class="tc-hint">Click to vouch or warn</p>');
+      Array.prototype.forEach.call(card.querySelectorAll('canvas[data-icon]'), function (c) { c.width = 5; c.height = 5; drawIcon(c.dataset.icon, 0, 0, c.getContext('2d')); });
+    }
+    if (cardFor !== a) { cardFor = a; card.hidden = false; }
+    card.classList.toggle('pinned', !!pinned);
+    // sit beside the agent, on whichever side has room, and stay inside the banner
+    var cw = card.offsetWidth, ch = card.offsetHeight, ax = a.x * sx, ay = a.y * sy;
+    var x = ax + 18 + cw < stage.clientWidth - 8 ? ax + 18 : ax - 18 - cw;
+    var y = clamp(ay - ch / 2 - 10, 70, stage.clientHeight - ch - 8);
+    card.style.transform = 'translate(' + Math.round(clamp(x, 8, stage.clientWidth - cw - 8)) + 'px,' + Math.round(y) + 'px)';
+  }
+  function agentAt(e) {
+    var r = stage.getBoundingClientRect(), wx = (e.clientX - r.left) * W / stage.clientWidth, wy = (e.clientY - r.top) * H / stage.clientHeight;
+    var best = null, bd = 1e9, reach = S === 2 ? 9 : 7;
+    agents.forEach(function (a) {
+      if (a.gone || a.hidden) return;
+      var d = Math.hypot(a.x - wx, a.y - 5 - wy);
+      if (Math.abs(a.x - wx) < reach && wy > a.y - 15 && wy < a.y + 4 && d < bd) { bd = d; best = a; }
+    });
+    return best;
+  }
+  function outside(e) { return e.target.closest && e.target.closest('nav, .town-key, .town-pause, .town-card, .town-dialog'); }
+  stage.addEventListener('pointermove', function (e) {
+    if (e.pointerType !== 'mouse') return;
+    hover = outside(e) ? null : agentAt(e);
+    stage.style.cursor = hover ? 'pointer' : '';
+  });
+  stage.addEventListener('pointerleave', function () { hover = null; stage.style.cursor = ''; });
+  stage.addEventListener('click', function (e) {
+    if (outside(e)) return;
+    var a = agentAt(e);
+    pinned = a && a !== pinned ? a : null;
+    if (!pinned && e.pointerType !== 'mouse') hover = null;
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') pinned = null; });
+  // the visitor takes part: vouching raises nearby agents' trust in this agent, a warning lowers it
+  card.addEventListener('click', function (e) {
+    var b = e.target.closest('button'), a = pinned;
+    if (!b || !a || frameNo - lastAct < 40) return;
+    lastAct = frameNo;
+    var vouch = b.dataset.act === 'vouch';
+    var near = live().filter(function (o) { return o !== a && !o.hidden && Math.hypot(o.x - a.x, o.y - a.y) < 50; });
+    near.forEach(function (o) { setT(o, a, T(o, a) + (vouch ? .12 : -.15)); });
+    floatIcon(a.x, a.y - 14, vouch ? 'heart' : 'warn', 80);
+    near.slice(0, 5).forEach(function (o) { floatIcon(o.x, o.y - 14, vouch ? 'heart' : 'warn', 60); });
+    var who = near.length ? (near.length === 1 ? near[0].name : near.length + ' neighbors') : '';
+    say(vouch ? 'You vouch for ' + a.name + '. ' + (who ? who + ' trust ' + a.name + ' a little more.' : 'Nobody is near enough to hear.')
+      : 'You warn the town about ' + a.name + '. ' + (who ? who + ' trust ' + a.name + ' a little less.' : 'Nobody is near enough to hear.'), 3);
+    shownAt = -1e9;
+    checkExposure();
+  });
+
   // ------------------------------------------------------------ run loop
   function reset() {
     tags.forEach(function (t) { t.el.remove(); }); tags = []; queue = []; shown = null; shownAt = -1e9;
+    logLines = []; drawLog(); hover = pinned = null; card.hidden = true;
     tick = Math.round(DAY * .05); day = 1; rally = null; election = null; convs = []; effects = []; smoke = [];
     tallyEl.textContent = '';
     build(); populate();
