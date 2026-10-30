@@ -266,6 +266,8 @@
 
   // dest: { x, y, kind: 'road' | 'door' | 'plaza' | 'edge', road }
   function go(a, dest, goal) {
+    // an agent called out while at home (for example, a newly elected mayor) first steps out of the door
+    if (a.hidden && !a.gone && a.state === 'home') { a.hidden = false; a.wakeAt = 0; a.x = a.home.x; a.y = a.home.yb - 1; }
     var pts = [], x = a.x, y = a.y, road;
     a.goal = goal || 'wander'; a.state = 'walk';
     if (dest.kind === 'plaza' && inPlaza(x, y)) { a.path = [{ x: dest.x, y: y }, { x: dest.x, y: dest.y }]; return; }
@@ -313,7 +315,12 @@
 
   function arrive(a) {
     var goal = a.goal; a.goal = null;
-    if (goal === 'home') { a.hidden = true; a.state = 'home'; a.home.lit = true; return; }
+    if (goal === 'home') {
+      a.hidden = true; a.state = 'home'; a.home.lit = true;
+      // someone who gets home after dawn has already missed the wake-up call, so they come back out soon
+      var p = phase(); if (p > .965 || p < .78) a.wakeAt = tick + rand(30, 150);
+      return;
+    }
     if (goal === 'leave') { a.gone = true; a.hidden = true; return; }
     if (goal === 'rally' || goal === 'gather' || goal === 'vote') { a.state = goal === 'rally' ? 'speak' : 'listen'; a.dir = goal === 'rally' ? 'down' : (a.y > podium.y ? 'up' : 'down'); if (goal === 'vote') a.dir = 'up'; return; }
     a.state = 'idle'; a.wait = rand(40, 220);
