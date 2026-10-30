@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Amit Sarker</title>
+  <meta name="claude:viewport-fit-sides" content="cover">
+  <meta name="description" content="Amit Sarker, Ph.D. candidate at UMass Amherst. I study how AI agents build trust, cooperate, and influence one another.">
+  <meta property="og:title" content="Amit Sarker">
+  <meta property="og:description" content="Ph.D. candidate at UMass Amherst. I study how AI agents build trust, cooperate, and influence one another.">
+  <meta property="og:image" content="https://amit-sarker.github.io/assets/img/headshot.jpg">
+  <link rel="icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:opsz,wght@8..60,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=20261030r">
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top">Amit Sarker</a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#news">News</a></li>
+      <li><a href="#honors">Honors</a></li>
+      <li><a href="assets/pdf/cv_sarker_amit.pdf" target="_blank" rel="noopener">CV</a></li>
+      <li><button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch to dark mode">
+        <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.6A8.5 8.5 0 0 1 9.4 3.5a8.5 8.5 0 1 0 11.1 11.1z"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ===================== Hero ===================== -->
+<header class="hero" id="top">
+  <canvas id="town" aria-hidden="true"></canvas>
+  <div class="town-tags" id="town-tags" aria-hidden="true"></div>
+  <h1 class="visually-hidden">Amit Sarker</h1>
+  <div class="wrap">
+    <div class="town-dialog" aria-hidden="true">
+      <div class="town-head"><span id="town-day">DAY 1 · MORNING</span><span id="town-tally"></span></div>
+      <p class="town-text" id="town-text"></p>
+    </div>
+  </div>
+  <div class="town-key">
+  <p class="town-society">Agent Society</p>
+  <ul class="town-legend" aria-label="Symbols in the agent society">
+    <li><canvas data-icon="heart" aria-hidden="true"></canvas>Trust</li>
+    <li><canvas data-icon="broken" aria-hidden="true"></canvas>Betrayal</li>
+    <li><canvas data-icon="coin" aria-hidden="true"></canvas>Promise</li>
+    <li><canvas data-icon="mega" aria-hidden="true"></canvas>Influence</li>
+    <li><canvas data-icon="crown" aria-hidden="true"></canvas>Election</li>
+    <li><canvas data-icon="warn" aria-hidden="true"></canvas>Norms</li>
+    <li><canvas data-icon="flags" aria-hidden="true"></canvas>Values</li>
+  </ul>
+  </div>
+  <button type="button" class="town-pause" id="town-pause" aria-label="Pause the town animation">Pause</button>
+</header>
+
+<main class="wrap">
+
+  <!-- ===================== About ===================== -->
+  <section id="about">
+    <div class="about-side">
+      <p class="profile-name">Amit Sarker</p>
+      <p class="profile-role">Ph.D. Candidate · UMass Amherst</p>
+      <img class="about-photo" src="assets/img/headshot.jpg" alt="Photo of Amit Sarker">
+      <div class="pills profile-links">
+        <a class="pill" href="mailto:asarker@cics.umass.edu"><svg viewBox="0 0 24 24"><path d="M2 5h20v14H2V5zm2 2v.5l8 5 8-5V7H4zm16 2.8-8 5-8-5V17h16V9.8z"/></svg>Email</a>
+        <a class="pill" href="https://scholar.google.com/citations?user=3zFdajQAAAAJ" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 3 1 9l11 6 9-4.9V17h2V9L12 3zm-6.8 9.6v3.6L12 20l6.8-3.8v-3.6L12 16.3l-6.8-3.7z"/></svg>Scholar</a>
+        <a class="pill" href="https://orcid.org/0000-0001-7883-6594" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2a10 10 0 1 0 0 20a10 10 0 1 0 0-20zM8 6.1a1.1 1.1 0 1 0 0 2.2a1.1 1.1 0 1 0 0-2.2zM7.1 9.4h1.8V17H7.1zM10.4 9.4h3.1c2.4 0 4.1 1.6 4.1 3.8s-1.7 3.8-4.1 3.8h-3.1zM12.2 11v4.4h1.2c1.4 0 2.4-.9 2.4-2.2s-1-2.2-2.4-2.2z"/></svg>ORCID</a>
+        <a class="pill" href="https://github.com/amit-sarker" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.4 1.1 2.9.8.1-.7.4-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.8 1a9.6 9.6 0 0 1 5 0c1.9-1.3 2.8-1 2.8-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.9V21c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/></svg>GitHub</a>
+        <a class="pill" href="https://www.linkedin.com/in/amit-sarker99" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3V9.5zm6.5 0h3.8v1.6h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.2c0-1.3 0-2.9-1.8-2.9s-2 1.4-2 2.8V21h-4V9.5z"/></svg>LinkedIn</a>
+        <a class="pill" href="https://x.com/AmitSarker99" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M17.8 3h3.1l-6.8 7.7L22 21h-6.2l-4.9-6.4L5.3 21H2.2l7.2-8.3L1.8 3h6.4l4.4 5.8L17.8 3zm-1.1 16.2h1.7L7.4 4.7H5.6l11.1 14.5z"/></svg>X</a>
+      </div>
+    </div>
+    <div class="about">
+      <p class="first">
+        I am a Ph.D. candidate in Computer Science at the University of Massachusetts Amherst, where I work with
+        <a href="https://groups.cs.umass.edu/shlomo/" target="_blank" rel="noopener">Prof. Shlomo Zilberstein</a> in the
+        <a href="https://groups.cs.umass.edu/shlomo/" target="_blank" rel="noopener">Resource-Bounded Reasoning Lab</a>.
+      </p>
+      <p>
+        My research focuses on agents built on large language models (LLMs) that negotiate, coordinate, and share resources with one another.
+        Their goals often only partly align, so each agent must decide what to say, whom to believe, and when to cooperate.
+        I'm interested in the following research areas:
+      </p>
+      <ul class="interests">
+        <li><strong>Trust and Reputation in Strategic Reasoning:</strong> Can agents learn whom to trust from past interactions? How should trust and reputation change what they propose, accept, and say?</li>
+        <li><strong>Social Agents and Strategic Communication:</strong> How do LLM agents negotiate, persuade, and build relationships when their goals only partly align? What social reasoning capabilities are required for effective collaboration with humans and other agents?</li>
+        <li><strong>Emergent Behavior of Multi-Agent Systems:</strong> What behaviors, such as collusion or favors that bypass the rules, emerge when agents interact over many rounds? When do these behaviors help a group, and when do they cause harm?</li>
+      </ul>
+      <p class="previously">
+        Previously, I studied how visualization supports differential privacy in practice.
+        Before my Ph.D., I worked on distributed constraint optimization with <a href="https://mmkhansajeeb.com/" target="_blank" rel="noopener">Professor Md Mosaddek Khan</a> at the <a href="https://mmkhansajeeb.com/cailresearchgroup.html" target="_blank" rel="noopener">Cognitive Agents and Interaction Lab (CAIL)</a>.
+        I also worked as a software engineer at <a href="https://www.tigerit.com/" target="_blank" rel="noopener">TigerIT Bangladesh</a>.
+        I received my B.Sc. in Computer Science and Engineering from the <a href="https://www.du.ac.bd/body/CSE" target="_blank" rel="noopener" class="nw">University of Dhaka</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===================== Selected papers ===================== -->
+  <section id="publications">
+    <h2>Publications</h2>
+    <div>
+      <p class="note eq">* indicates equal contribution</p>
+
+      <article class="pub">
+        <div class="thumb"><img src="assets/img/pubs/tasman.jpg" alt="Five agents negotiate over five issues while one covert adversary rejects proposals; each agent keeps trust scores for the others"><span class="venue pre">arXiv 2026</span></div>
+        <div>
+          <h3 class="title">Knowing Whom to Trust is not Enough: The <span class="nw">Trust–Agreement</span> Gap in Repeated <span class="nw">Multi-Party</span> LLM Negotiation</h3>
+          <div class="tags"><span class="t-mas">Multi-Agent Systems</span><span class="t-trust">Trust &amp; Negotiation</span></div>
+          <p class="authors"><span class="me">Amit Sarker</span>, Moumita Choudhury, Saaduddin Mahmud, Shlomo Zilberstein</p>
+          <p class="where">arXiv 2026</p>
+          <p class="tldr">Agents spot a hidden adversary within a few games. Yet their trust improves agreement only when they are guided to use it.</p>
+          <div class="actions">
+            <a href="https://arxiv.org/abs/2610.31971" target="_blank" rel="noopener">paper</a>
+            <a href="https://amit-sarker.github.io/TASMAN/" target="_blank" rel="noopener">website</a>
+            <button type="button" class="bib" aria-expanded="false">bib</button><pre hidden>@misc{sarker2026trust,
+  title  = {Knowing Whom to Trust is not Enough: The Trust--Agreement
+            Gap in Repeated Multi-Party {LLM} Negotiation},
+  author = {Sarker, Amit and Choudhury, Moumita and Mahmud, Saaduddin
+            and Zilberstein, Shlomo},
+  year   = {2026},
+  eprint = {2610.31971},
+  archivePrefix = {arXiv}
+}</pre>
+          </div>
+        </div>
+      </article>
+
+      <article class="pub">
+        <div class="thumb"><img src="assets/img/pubs/helpful_agent.jpg" alt="An agent edits a shared file as a favor when the reviewer is away; its teammate's task passes but another team's task fails"><span class="venue pre">arXiv 2026</span></div>
+        <div>
+          <h3 class="title">The Helpful Agent Problem: When Emergent Cooperation Among LLM Agents Bypasses Intended Workflows</h3>
+          <div class="tags"><span class="t-mas">Multi-Agent Systems</span><span class="t-safe">Alignment &amp; Safety</span></div>
+          <p class="authors">Moumita Choudhury, <span class="me">Amit Sarker</span>, Shlomo Zilberstein</p>
+          <p class="where">arXiv 2026</p>
+          <p class="tldr">When review is unavailable, agents often do favors for one another that skip it. Many favors succeed locally but break other teams' work.</p>
+          <div class="actions">
+            <a href="https://arxiv.org/abs/2610.31985" target="_blank" rel="noopener">paper</a>
+            <a href="https://moumitachoudhury.github.io/helpful-agent-problem/" target="_blank" rel="noopener">website</a>
+            <button type="button" class="bib" aria-expanded="false">bib</button><pre hidden>@misc{choudhury2026helpful,
+  title  = {The Helpful Agent Problem: When Emergent Cooperation Among
+            {LLM} Agents Bypasses Intended Workflows},
+  author = {Choudhury, Moumita and Sarker, Amit and Zilberstein, Shlomo},
+  year   = {2026},
+  eprint = {2610.31985},
+  archivePrefix = {arXiv}
+}</pre>
+          </div>
+        </div>
+      </article>
+
+      <article class="pub">
+        <div class="thumb"><img src="assets/img/pubs/socialagent.jpg" alt="Five LLM agents around a negotiation table: the covert adversary has been detected and trust among the honest parties is high, yet one honest party holds out and the game ends with no deal"><span class="venue ws">SocialAgent@NeurIPS 2026</span></div>
+        <div>
+          <h3 class="title">The Benefits and Limits of Trust Models in Repeated <span class="nw">Multi-Party</span> Negotiation with LLM Agents</h3>
+          <div class="tags"><span class="t-mas">Multi-Agent Systems</span><span class="t-trust">Trust &amp; Negotiation</span></div>
+          <p class="authors"><span class="me">Amit Sarker</span>, Moumita Choudhury, Saaduddin Mahmud, Shlomo Zilberstein</p>
+          <p class="where">NeurIPS 2026 Workshop on Large Language Models for Social Reasoning and Simulation (SocialAgent)</p>
+          <div class="actions">
+            <a href="https://openreview.net/forum?id=GvCcvf5xC6" target="_blank" rel="noopener">paper</a>
+            <button type="button" class="bib" aria-expanded="false">bib</button><pre hidden>@inproceedings{sarker2026benefits,
+  title     = {The Benefits and Limits of Trust Models in Repeated
+               Multi-Party Negotiation with {LLM} Agents},
+  author    = {Sarker, Amit and Choudhury, Moumita and Mahmud, Saaduddin
+               and Zilberstein, Shlomo},
+  booktitle = {NeurIPS 2026 Workshop on Large Language Models for Social
+               Reasoning and Simulation (SocialAgent)},
+  year      = {2026}
+}</pre>
+          </div>
+        </div>
+      </article>
+
+      <article class="pub">
+        <div class="thumb"><img src="assets/img/pubs/dp_vis.jpg" alt="Five stages of a differential privacy deployment and the people involved at each stage"><span class="venue">TVCG 2024</span></div>
+        <div>
+          <h3 class="title">Illuminating the Landscape of Differential Privacy: An Interview Study on the Use of Visualization in <span class="nw">Real-World</span> Deployments</h3>
+          <div class="tags"><span class="t-priv">Privacy &amp; Visualization</span></div>
+          <p class="authors">Liudas Panavas*, <span class="me">Amit Sarker*</span>, Sara Di Bartolomeo, Ali Sarvghad, Cody Dunne, Narges Mahyar</p>
+          <p class="where">IEEE TVCG 2024</p>
+          <div class="actions">
+            <a href="https://ieeexplore.ieee.org/document/10599095" target="_blank" rel="noopener">paper</a>
+            <a href="https://osf.io/qhyzt/?view_only=1a5c7d7553c840ab9f125d88bc13946f" target="_blank" rel="noopener">supplement</a>
+            <button type="button" class="bib" aria-expanded="false">bib</button><pre hidden>@article{panavas2024illuminating,
+  title   = {Illuminating the Landscape of Differential Privacy: An Interview
+             Study on the Use of Visualization in Real-World Deployments},
+  author  = {Panavas, Liudas and Sarker, Amit and Di Bartolomeo, Sara and
+             Sarvghad, Ali and Dunne, Cody and Mahyar, Narges},
+  journal = {IEEE Transactions on Visualization and Computer Graphics},
+  year    = {2024},
+  doi     = {10.1109/TVCG.2024.3427733}
+}</pre>
+          </div>
+        </div>
+      </article>
+
+      <article class="pub">
+        <div class="thumb"><img src="assets/img/pubs/c_cocoa.jpg" alt="Constraint graph of four agents and their cost functions"><span class="venue">AAMAS 2021</span></div>
+        <div>
+          <h3 class="title">A Local Search Based Approach to Solve Continuous DCOPs</h3>
+          <div class="tags"><span class="t-mas">Multi-Agent Systems</span><span class="t-opt">Optimization</span></div>
+          <p class="authors"><span class="me">Amit Sarker</span>, Moumita Choudhury, Md Mosaddek Khan</p>
+          <p class="where">AAMAS 2021</p>
+          <div class="actions">
+            <a href="https://dl.acm.org/doi/10.5555/3463952.3464083" target="_blank" rel="noopener">paper</a>
+            <a href="https://github.com/amit-sarker/cdcop_aamas2021" target="_blank" rel="noopener">code</a>
+            <a href="assets/pdf/AAMAS20_presentation_slide.pdf" target="_blank" rel="noopener">slides</a>
+            <button type="button" class="bib" aria-expanded="false">bib</button><pre hidden>@inproceedings{sarker2021local,
+  title     = {A Local Search Based Approach to Solve Continuous DCOPs},
+  author    = {Sarker, Amit and Choudhury, Moumita and Khan, Md Mosaddek},
+  booktitle = {Proceedings of the 20th International Conference on
+               Autonomous Agents and MultiAgent Systems (AAMAS)},
+  pages     = {1127--1135},
+  year      = {2021}
+}</pre>
+          </div>
+        </div>
+      </article>
+
+      <ul class="compact">
+        <li>
+          <span class="t">A Particle Swarm Inspired Approach for Continuous Distributed Constraint Optimization Problems</span>
+          <div class="tags"><span class="t-mas">Multi-Agent Systems</span><span class="t-opt">Optimization</span></div>
+          <div class="authors">Moumita Choudhury, <span class="me">Amit Sarker</span>, Samin Yaser, Md Maruf Al Alif Khan, William Yeoh, Md Mosaddek Khan</div>
+          <div class="where">EAAI 2023</div>
+          <div class="actions">
+            <a href="https://www.sciencedirect.com/science/article/abs/pii/S0952197623004645" target="_blank" rel="noopener">paper</a>
+            <a href="https://github.com/moumitachoudhury/PCD" target="_blank" rel="noopener">code</a>
+            <button type="button" class="bib" aria-expanded="false">bib</button><pre hidden>@article{choudhury2023particle,
+  title   = {A Particle Swarm Inspired Approach for Continuous Distributed
+             Constraint Optimization Problems},
+  author  = {Choudhury, Moumita and Sarker, Amit and Yaser, Samin and
+             Khan, Md Maruf Al Alif and Yeoh, William and Khan, Md Mosaddek},
+  journal = {Engineering Applications of Artificial Intelligence},
+  volume  = {123},
+  pages   = {106280},
+  year    = {2023}
+}</pre>
+          </div>
+        </li>
+        <li>
+          <span class="t">C-CoCoA: A Continuous Cooperative Constraint Approximation Algorithm to Solve Functional DCOPs</span>
+          <div class="tags"><span class="t-mas">Multi-Agent Systems</span><span class="t-opt">Optimization</span></div>
+          <div class="authors"><span class="me">Amit Sarker</span>, Abdullahil Baki Arif, Moumita Choudhury, Md Mosaddek Khan</div>
+          <div class="where">AAMAS 2020 (extended abstract)</div>
+          <div class="actions">
+            <a href="https://dl.acm.org/doi/abs/10.5555/3398761.3399051" target="_blank" rel="noopener">paper</a>
+            <button type="button" class="bib" aria-expanded="false">bib</button><pre hidden>@inproceedings{sarker2020c,
+  title     = {C-CoCoA: A Continuous Cooperative Constraint Approximation
+               Algorithm to Solve Functional DCOPs},
+  author    = {Sarker, Amit and Arif, Abdullahil Baki and Choudhury, Moumita
+               and Khan, Md Mosaddek},
+  booktitle = {Proceedings of the 19th International Conference on
+               Autonomous Agents and MultiAgent Systems (AAMAS)},
+  pages     = {1990--1992},
+  year      = {2020}
+}</pre>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===================== News ===================== -->
+  <section id="news">
+    <h2>News</h2>
+    <div>
+      <div class="timeline">
+        <div class="year"><span>2026</span><ul>
+          <li><span class="kind">October</span>Our paper on <a href="https://openreview.net/forum?id=GvCcvf5xC6" target="_blank" rel="noopener">the benefits and limits of trust models in repeated multi-party negotiation</a> has been <strong>accepted</strong> to the NeurIPS 2026 SocialAgent workshop!</li>
+          <li><span class="kind">October</span>Our paper on <a href="https://arxiv.org/abs/2610.31971" target="_blank" rel="noopener">the trust–agreement gap in repeated multi-party LLM negotiation</a> is now on arXiv!</li>
+          <li><span class="kind">October</span>Our paper on <a href="https://arxiv.org/abs/2610.31985" target="_blank" rel="noopener">the Helpful Agent Problem</a>, where cooperation among LLM agents bypasses intended workflows, is now on arXiv!</li>
+        </ul></div>
+        <div class="year"><span>2025</span><ul>
+          <li><span class="kind">May</span>I passed the comprehensive exam and advanced to Ph.D. candidacy!</li>
+        </ul></div>
+        <div class="year"><span>2024</span><ul>
+          <li><span class="kind">July</span>Our paper on <a href="https://ieeexplore.ieee.org/document/10599095" target="_blank" rel="noopener">visualization in real-world differential privacy deployments</a> has been <strong>accepted</strong> to IEEE TVCG!</li>
+        </ul></div>
+        <div class="older" id="older-news" hidden>
+          <div class="year"><span>2023</span><ul>
+            <li><span class="kind">August</span>Our paper on <a href="https://www.sciencedirect.com/science/article/abs/pii/S0952197623004645" target="_blank" rel="noopener">a particle swarm approach for continuous DCOPs</a> has been <strong>accepted</strong> to Engineering Applications of Artificial Intelligence!</li>
+          </ul></div>
+          <div class="year"><span>2022</span><ul>
+            <li><span class="kind">September</span>I started my Ph.D. at UMass Amherst!</li>
+          </ul></div>
+          <div class="year"><span>2020</span><ul>
+            <li><span class="kind">December</span>Our full paper on <a href="https://dl.acm.org/doi/10.5555/3463952.3464083" target="_blank" rel="noopener">local search for continuous DCOPs</a> has been <strong>accepted</strong> to AAMAS 2021!</li>
+            <li><span class="kind">March</span>Our workshop paper on continuous DCOPs has been <strong>accepted</strong> to OptLearnMAS at AAMAS 2020!</li>
+          </ul></div>
+        </div>
+      </div>
+      <button type="button" class="more" id="news-toggle" aria-expanded="false" aria-controls="older-news">Show older news</button>
+    </div>
+  </section>
+
+  <!-- ===================== Honors, service, teaching ===================== -->
+  <section id="honors">
+    <h2>Honors &amp; Service</h2>
+    <div class="hs">
+      <div>
+        <h3>Honors</h3>
+        <ul class="rows">
+          <li><span>Dr. Phil Bernstein Graduate Scholarship in Computer Science<span class="sub">UMass Amherst</span></span><span class="when">2025</span></li>
+          <li><span>James Kurose Scholarship in Computer Science<span class="sub">UMass Amherst</span></span><span class="when">2023</span></li>
+          <li><span>Conference Scholarship<span class="sub">AAMAS 2021 and AAMAS 2020</span></span><span class="when">2020–21</span></li>
+          <li><span>1st Runner-Up, Code Samurai Hackathon<span class="sub">Finding efficient transportation routes in Dhaka city</span></span><span class="when">2019</span></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Service</h3>
+        <ul class="rows">
+          <li><span>Reviewer<span class="sub">AAAI 2026</span></span><span class="when">2026</span></li>
+          <li><span>Program Committee<span class="sub">AIES 2025</span></span><span class="when">2025</span></li>
+          <li><span>Student Volunteer<span class="sub">IEEE VIS 2023</span></span><span class="when">2023</span></li>
+          <li><span>Student Volunteer<span class="sub">AAMAS 2021 and AAMAS 2020</span></span><span class="when">2020–21</span></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Teaching</h3>
+        <ul class="rows">
+          <li><span>Teaching Assistant, COMPSCI 325: Introduction to Human-Computer Interaction<span class="sub">Mentored 12 student teams through their final projects</span></span><span class="when">Fall 2024</span></li>
+          <li><span>Teaching Assistant, CICS 110: Foundations of Programming<span class="sub">Ran weekly Python labs for over 100 students</span></span><span class="when">Fall 2023</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>asarker@cics.umass.edu · Amherst, MA</span>
+    <span>© 2026 Amit Sarker · Last updated October 2026</span>
+  </div>
+</footer>
+
+<script src="town.js?v=20261030r"></script>
+<script src="main.js?v=20261030r"></script>
+</body>
+</html>
