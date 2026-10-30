@@ -68,13 +68,21 @@
 
   // ----------------------------------------------------------------- world
   function build() {
-    var r = stage.getBoundingClientRect();
+    var r = stage.getBoundingClientRect(), reserve = 0;
+    // below 1000px the Agent Society key gets its own strip of grass under the town; the banner grows by its height
+    var key = document.querySelector('.town-key');
+    if (key && r.width < 1000) {
+      var kh = key.getBoundingClientRect().height, lh = key.querySelector('.town-legend').getBoundingClientRect().height;
+      stage.style.setProperty('--key-h', Math.ceil(kh) + 'px'); stage.style.setProperty('--legend-h', Math.ceil(lh) + 'px');
+      r = stage.getBoundingClientRect();
+      reserve = kh + 20;
+    }
     S = r.width < 560 ? 2 : r.width > 1600 ? 4 : 3;
     W = Math.max(150, Math.round(r.width / S)); H = Math.max(150, Math.round(r.height / S));
     cv.width = W; cv.height = H;
     var R = mulberry(20261030);
     // wide screens cut 100px of sky from the top (see .hero in style.css), so lay the town out on the uncut height
-    var trim = r.width >= 1000 ? Math.round(100 / S) : 0, full = H + trim;
+    var trim = r.width >= 1000 ? Math.round(100 / S) : 0, full = H + trim - Math.round(reserve / S);
     yA = Math.round(full * 0.52) - trim; yB = Math.round(full * 0.87) - trim; cx = Math.round(W / 2);
     P = { x0: cx - 30, x1: cx + 30, y0: yA + 4, y1: yB - 4 };
     lanes = [cx];
@@ -826,6 +834,8 @@
   if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { onScreen = es[0].isIntersecting; }).observe(stage);
 
   reset();
+  // the key's height depends on the pixel font, so lay the town out again once the font has loaded
+  if (document.fonts && document.fonts.ready && stage.clientWidth < 1000) document.fonts.ready.then(function () { if (!reduce) reset(); else build(); });
   if (reduce) {
     // with reduced motion, start paused on a busy moment of the day
     for (var k = 0; k < DAY * .36; k++) step();

@@ -165,7 +165,6 @@ nav.scrolled ul a:hover { color: var(--accent); }
 .town-legend li { display: flex; align-items: center; gap: 6px; white-space: nowrap; }
 .town-legend canvas { width: 15px; height: 15px; image-rendering: pixelated; image-rendering: crisp-edges; }
 /* below 1000px the key would cover the road, so it is left out */
-@media (max-width: 999px) { .town-key { display: none; } }
 @media (max-width: 1279px) {
   .town-key { gap: 12px; }
   .town-society { font-size: 12px; }
@@ -174,6 +173,15 @@ nav.scrolled ul a:hover { color: var(--accent); }
 }
 @media (max-width: 1099px) {
   .town-society { font-size: 11px; }
+/* below 1000px the key sits in its own strip under the town (town.js sets --key-h and --legend-h), title above the box */
+@media (max-width: 999px) {
+  header.hero { min-height: calc(440px + var(--key-h, 96px)); }
+  .town-key { left: 24px; right: 24px; bottom: 12px; max-width: none; flex-direction: column; align-items: flex-start; gap: 8px; }
+  .town-society { font-size: 12px; }
+  .town-legend { font-size: 9px; gap: 8px 12px; }
+  .town-legend canvas { width: 10px; height: 10px; }
+  .town-pause { bottom: calc(var(--legend-h, 60px) + 12px); }
+}
   .town-legend { font-size: 9px; }
 }
 .pills { display: flex; flex-wrap: wrap; gap: 10px; }
@@ -323,6 +331,7 @@ footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; g
   .hero { min-height: 440px; }
   .hero .wrap { padding-top: 70px; }
   .town-text { font-size: 9px; }
+  .town-key { left: 16px; right: 16px; }
   nav .brand { display: none; }
   h2 { font-size: 27px; }
   section { padding-top: 56px; }
