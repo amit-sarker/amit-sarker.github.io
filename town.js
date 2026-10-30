@@ -200,13 +200,15 @@
       id: nextId++, name: name, party: party, deceiver: deceiver, exposed: false, home: home,
       x: 0, y: 0, dir: 'down', moving: false, path: [], goal: null, state: 'idle', wait: rand(30, 200),
       speed: rand(.32, .42), skin: pick(SKINS), hair: pick(HAIRS), trust: {}, cool: rand(60, 400),
-      pending: [], betrayals: 0, hidden: false, off: ((Math.random() * 4) | 0) - 2, flash: 0, wakeAt: 0, spark: 0
+      pending: [], betrayals: 0, star: false, hidden: false, off: ((Math.random() * 4) | 0) - 2, flash: 0, wakeAt: 0, spark: 0
     };
   }
-  function T(a, b) { var v = a.trust[b.id]; return v === undefined ? .45 : v; }
-  function setT(a, b, v) { a.trust[b.id] = clamp(v, 0, 1); }
+  // Mou (the star agent) never betrays anyone, so everyone trusts Mou fully and Mou's reputation stays at 100
+  function T(a, b) { if (b.star) return 1; var v = a.trust[b.id]; return v === undefined ? .45 : v; }
+  function setT(a, b, v) { a.trust[b.id] = b.star ? 1 : clamp(v, 0, 1); }
   function live() { return agents.filter(function (a) { return !a.gone; }); }
   function reputation(b) {
+    if (b.star) return 1;
     var s = 0, n = 0;
     agents.forEach(function (a) { if (a !== b && !a.gone) { s += T(a, b); n++; } });
     return n ? s / n : .45;
@@ -236,6 +238,8 @@
       placeRandom(a);
       agents.push(a);
     }
+    // Mou: honest, fully trusted, and the town's most influential agent
+    var mou = agents[nDec]; mou.name = 'Mou'; mou.star = true;
     // a few friendships already exist
     agents.forEach(function (a) { agents.forEach(function (b) { if (a !== b) setT(a, b, rand(.3, .6)); }); });
     // deceivers start with promises that will be broken soon
@@ -244,10 +248,7 @@
       victims.forEach(function (v, j) { setT(v, d, .74); d.pending.push({ v: v, at: tick + 420 + k * 1500 + j * 520 }); });
     });
     // a mayor from yesterday's election
-    var counts = [0, 0, 0]; agents.forEach(function (a) { counts[a.party]++; });
-    ruling = counts.indexOf(Math.max.apply(null, counts));
-    var l = agents.filter(function (a) { return a.party === ruling && !a.deceiver; })[0];
-    mayor = l || leaderOf(ruling); partner = -1;
+    ruling = mou.party; mayor = mou; partner = -1;
   }
 
   function placeRandom(a) {
@@ -915,6 +916,7 @@
     if (!b || !a || frameNo - lastAct < 40) return;
     lastAct = frameNo;
     var vouch = b.dataset.act === 'vouch';
+    if (a.star && !vouch) { floatIcon(a.x, a.y - 14, 'heart', 80); say('Nobody believes a warning about ' + a.name + '. ' + a.name + ' has a spotless record.', 3); shownAt = -1e9; return; }
     var near = live().filter(function (o) { return o !== a && !o.hidden && Math.hypot(o.x - a.x, o.y - a.y) < 50; });
     near.forEach(function (o) { setT(o, a, T(o, a) + (vouch ? .12 : -.15)); });
     floatIcon(a.x, a.y - 14, vouch ? 'heart' : 'warn', 80);
